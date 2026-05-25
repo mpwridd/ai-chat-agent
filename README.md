@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Chat Agent 🤖
+
+Full-featured AI chat application powered by **Mimo v2.5 Pro** (Xiaomi).
+
+## Features
+
+- 💬 **Real-time Streaming** — SSE streaming responses, word-by-word
+- 🎭 **4 Chat Modes** — General, Coding, Writing, Analysis
+- 📝 **Markdown Rendering** — Full markdown with syntax highlighting
+- 💻 **Code Highlighting** — One-click copy code blocks
+- 💾 **Chat History** — Local state management with Zustand
+- 🏷️ **Auto Title** — AI-generated chat titles
+- 📱 **Responsive** — Beautiful on desktop and mobile
+- 🎨 **Dark Theme** — Sleek dark UI with Tailwind CSS
+
+## Tech Stack
+
+- **Next.js 14** (App Router, API Routes)
+- **TypeScript** + **Tailwind CSS**
+- **Zustand** (state management)
+- **React Markdown** + **Remark GFM** + **Rehype Highlight**
+- **Lucide React** (icons)
+- **Mimo v2.5 Pro** (AI model via Xiaomi API)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+MIMO_API_KEY=your-api-key
+MIMO_BASE_URL=https://token-plan-sgp.xiaomimimo.com/v1
+MIMO_MODEL=mimo-v2-omni
+```
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── api/chat/route.ts     # Streaming chat API (SSE)
+│   ├── api/title/route.ts    # Auto-generate chat title
+│   ├── page.tsx              # Main page
+│   └── globals.css           # Global styles
+├── components/
+│   ├── ChatApp.tsx           # Main app container
+│   ├── ChatMessages.tsx      # Message list + markdown
+│   ├── ChatInput.tsx         # Input with auto-resize
+│   └── Sidebar.tsx           # Chat history + mode selector
+└── lib/
+    ├── store.ts              # Zustand store
+    └── utils.ts              # Formatting helpers
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
